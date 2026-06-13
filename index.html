@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varaha Astro99 | Vrinda Upadhyaya</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" 
+        rel="stylesheet"> 
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --deep-maroon: #3d0101;
+            --accent-gold: #FFD700;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                url("bg.jpg.webp") no-repeat center center fixed;
+            background-size: cover;
+            color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* 🔹 Header Section */
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #5a0000, transparent);
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .brand-logo {
+            width: 140px;
+            /* Aapka Varah Astro Logo file name yahan aayega */
+            filter: drop-shadow(0 0 15px var(--gold));
+            margin-bottom: 20px;
+        }
+
+        h1.brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+
+        /* 🔹 Navigation */
+        nav {
+            background: #2a0101;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* 🔹 Sections Layout */
+        section {
+            padding: 80px 15%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+
+        /* 🔹 About Card */
+        .about-box {
+            background: var(--glass-bg);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 250px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* 🔹 Grid for Services & Courses */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+     
+/* 🔹 Service & Courses Grid */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px; /* थोड़ा बड़ा gap ताकि hover image neighbors को disturb न करे */
+    overflow: visible; /* zoomed images दिखें */
+}
+
+/* Card Styling */
+.service-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    position: relative; /* hover image z-index के लिए */
+    overflow: visible; /* zoomed image दिखे */
+}
+
+/* Hover slight lift */
+.service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+/* Image Styling */
+.service-card img {
+    width: 100%;
+    max-width: 400px; /* Instagram reel size */
+    height: auto;
+    object-fit: cover;
+    border: 3px solid #ffd700;
+    border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Hover effect: 2x zoom */
+.service-card:hover img {
+    transform: scale(2); /* 2x bigger */
+    z-index: 10;         /* card के ऊपर दिखे */
+    box-shadow: 0 0 30px #ffd700;
+}
+
+.card-info {
+    padding: 20px 20px 30px 20px; /* नीचे extra space ताकि image से distance रहे */
+    margin-top: 15px; /* optional: image और text के बीच extra gap */
+    text-align: center;
+}
+
+.card-info h3 {
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+        /* 🔹 Booking & QR */
+        .qr-box {
+            background: #fff;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .qr-box img {
+            width: 220px;
+        }
+
+        /* 🔹 Footer */
+        footer {
+            background: #1a0000;
+            padding: 50px 20px;
+            border-top: 2px solid var(--gold);
+            margin-top: 50px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 5%;
+            }
+
+            h1.brand-name {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="logo.png" alt="Varaha Astro Logo" class="brand-logo">
+        <h1 class="brand-name">Varaha Astro</h1>
+        <p class="tagline">By Pallawi Upadhyaya</p>
+        <p style="margin-top:10px; opacity: 0.8;">Trusted Guidance & Result-Oriented Spiritual Solutions</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <div class="about-box">
+            <h2>About Vrinda Upadhyaya</h2>
+            <img src="about.jpg" alt="Vrinda Upadhyaya" class="profile-pic">
+            <div style="flex: 1; min-width: 300px; max-width: 700px;">
+                <p
+                    style="font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase;">
+                    Certified Astrologer & Vastu Consultant
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    I am Vrinda Upadhyaya, Founder of Varaha Astro, a professionally Certified Astrologer and Vastu
+                    Expert with over 5 years
+                    of expertise in Lal Kitab, Vastu Shastra, and Spiritual Sciences. I am known for delivering over 90%
+                    accurate
+                    predictions and practical, result-oriented remedies that create real transformation in clients’
+                    lives.
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    My consultations are focused on clarity, solutions, and empowerment—helping clients with career,
+                    relationships, health,
+                    business, and life decisions. Many of my clients continue a long-term association with me due to the
+                    trust, accuracy,
+                    and positive results they experience after consultation.
+                </p>
+
+                <p style="margin-bottom: 15px;">
+                    💫 With a proven track record of over 90% accuracy, I have helped thousands navigate life's
+                    challenges. Even if
+                    you do not have your exact birth details, I specialize in preparing accurate life charts and
+                    providing
+                    result-oriented remedies for career, relationships, health, and business success.
+                </p>
+
+                <p
+                    style="font-style: italic; border-left: 3px solid var(--gold); padding-left: 20px; opacity: 0.9; color: #f1f1f1; margin-top: 25px;">
+                    My mission is simple: to guide you with authentic wisdom so you can move forward with confidence,
+                    balance, and success.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>consultation Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="kundalibooking.jpg" alt="Kundali">
+                <div class="card-info">
+                    <h3>Kundali consultation</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="Vastu services.jpg" alt="vastu">
+                <div class="card-info">
+                    <h3>Vastu consultation</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="tarotbooking.jpg" alt="Tarot">
+                <div class="card-info">
+                    <h3>Tarot consultation</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="Mahakundali.jpg" alt="mahakundalit">
+                <div class="card-info">
+                    <h3>Special Offer</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <h2>Learning & Courses</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="lalkitab.jpg" alt="Lal Kitab">
+                <div class="card-info">
+                    <h3>Astrology  Mastery</h3>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="tarotco.jpg" alt="Tarot Course">
+                <div class="card-info">
+                    <h3>Tarot Reading & Numerology Course</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer >
+        <section id="contact">
+        <h3>Connect with Varaha Astro</h3>
+        <div class="btn-group">
+            <a href="https://wa.me/916263898814" target="_blank" class="social-btn wa-btn">
+                WhatsApp: 7909315212
+            </a>
+        </div>
+        <p>Connect with me on Social Media</p><br>
+        <a href="https://www.instagram.com/varaha_astro99/"_blank" class="social-btn">Instagram
+            @astro_pallawii</a>
+        <div style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
+            &copy; 2026 Varaha Astro | Guided by Vrinda Upadhyaya
+        </div>
+        </section>
+    </footer>
+
+</body>
+
+</html>
